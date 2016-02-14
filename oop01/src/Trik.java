@@ -1,28 +1,26 @@
 import java.io.*;
 import javax.swing.JOptionPane;
 import java.util.*;
-public class Trik {
-
-	public static void main(String[] args) 
+public class Trik 
+{
+	boolean num1= true,num2=false,num3=false,b=false;
+	
+	public void getData(String round)
 	{
-		Scanner gold = new Scanner(System.in);
-		String round;
-		boolean num1= true,num2=false,num3=false,b=false;
-		
-		System.out.printf("Enter Input : ");
-		round = gold.next();
-		
 		for(int i=0;i<round.length();i++)
 		{
 			char a;
 			a = round.charAt(i);
 			if((a != 'A') && (a != 'B') && (a != 'C'))
 			{
-				System.out.println("Error");
+				JOptionPane.showMessageDialog(null,"Error","Message",JOptionPane.ERROR_MESSAGE);
 				round = " ";
 			}
 		}
-		
+	}
+	
+	public void Calc(String round)
+	{
 		for(int i=0;i<round.length();i++)
 		{
 			char a;
@@ -46,23 +44,41 @@ public class Trik {
 				num1 = b;
 			}
 		}
-		
+	}
+	
+	public void Print(String round)
+	{
+
 		if(round.equals(" "))
 		{
 			
 		}
 		else if(num1)
 		{
-			System.out.println("1");
+			JOptionPane.showMessageDialog(null,"1","Message",JOptionPane.INFORMATION_MESSAGE);
 		}
 		else if(num2)
 		{
-			System.out.println("2");
+			JOptionPane.showMessageDialog(null,"2","Message",JOptionPane.INFORMATION_MESSAGE);
 		}
 		else if(num3)
 		{
-			System.out.println("3");
+			JOptionPane.showMessageDialog(null,"3","Message",JOptionPane.INFORMATION_MESSAGE);
 		}
+	}
+	
+	
+	public static void main(String[] args) 
+	{
+		Scanner gold = new Scanner(System.in);
+		String round;
+		
+		round = JOptionPane.showInputDialog(null,"Enter Input : ","Input",JOptionPane.QUESTION_MESSAGE);
+		
+		Trik TK = new Trik();
+		TK.getData(round);
+		TK.Calc(round);
+		TK.Print(round);
 	}
 
 }
